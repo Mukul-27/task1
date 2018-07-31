@@ -1,5 +1,6 @@
 const express=require('express');
 const hbs=require('hbs');
+const port=process.env.PORT || 3000;
 
 
  let app= express();
@@ -19,6 +20,6 @@ const hbs=require('hbs');
 	 
  });
 
- app.listen(3000,()=>{
- console.log("Server is at open at port 3000");
+ app.listen(port,()=>{
+ console.log(`Server is at open at port ${port}`);
  });
