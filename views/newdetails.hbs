@@ -4,7 +4,14 @@
 <meta charset=utf-8>
 </head>
 <body>
-<p>{{editedUsers}}</p>
+<p>Enter the details of the new user:</p>
+<form action='/2' method="GET">
+	First Name: <input type="text" name="first_name" required><br>
+	Last Name: <input type="text" name="last_name" requied><br>
+	Email: <input type="email" name="email" required><br>
+	<input type="submit" value="Submit">
+</form>
+
 
 <h3><a href='/'>Home</a></h3>
 </body>

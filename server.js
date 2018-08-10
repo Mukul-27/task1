@@ -27,7 +27,7 @@ fs.writeFileSync('data.json',JSON.stringify(detData));
 
  app.get('/',(req,res)=>{
  res.render('home.hbs');
-
+ 
  });
 
  app.get('/2',(req,res)=>{
@@ -49,6 +49,9 @@ fs.writeFileSync('data.json',JSON.stringify(detData));
 
  app.get('/users',(req,res)=>{
  let users=JSON.stringify(fetchData());
+
+
+
  
   res.render('users.hbs',{
   users
@@ -68,16 +71,27 @@ fs.writeFileSync('data.json',JSON.stringify(detData));
   let toEditEmail=req.query.email_edit;
   
   let users=fetchData();
-  let editedUsers=JSON.stringify(users.filter((toEditEmail)=>toEditEmail !== email));
+  
 
-  saveData(editedUsers);
+let editedUsers=[];
+
+for(let i=0;i<users.length;i++){
+	if(toEditEmail!==users[i].email){
+	 let abc={
+	  	  firstName:users[i].first_name,
+		  lastName:users[i].last_name,
+		  email:users[i].email
+		  };
+		  editedUsers.push(abc);
+		  }
+		  
+		
+	
+}
+saveData(editedUsers);
+
  
-  
-  
- 
-  res.render('newdetails.hbs',{
-  editedUsers
-  });
+  res.render('newdetails.hbs');
   });
 
  app.listen(port,()=>{
